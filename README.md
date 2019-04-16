@@ -1,0 +1,2 @@
+# gsp-store
+web
