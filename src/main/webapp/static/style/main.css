@@ -1,0 +1,368 @@
+/*
+ * 娴ｈ法鏁octype閸氾拷
+ * 妞ょ敻娼伴惃鍕泊閸斻劍娼悽鍗炲斧閺夈儳娈慴ody缂佹瑤绨tml鐎电钖�
+ */
+html {
+	height:100%;	
+	border: 0;
+	overflow:auto;
+}
+ 
+body {
+	height:100%;	
+	border: 0;
+	line-height: 1;
+}
+
+
+/* 娑撹顔愰崳銊︾壉瀵拷*/
+#mainWrapper, .center {
+	margin:0 auto;
+}
+
+
+/* v1.0 | 20080212 http://meyerweb.com/eric/tools/css/reset/ */
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, img, b, u, i, 
+dl, dt, dd, ol, ul, li,
+form, label, th, td {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	font-size: 100%;
+}
+
+
+/*
+ * 缂佺喍绔寸�妞剧秼閸滃苯鏄傜�锟� */ 
+body,input,select,textarea,th,td,div,fieldset,blockquote,p{
+    font-family:arial,sans-serif;
+	font-size:12px;
+}
+input,textarea{font-size: 13px;}
+
+
+/* 缂佺喍绔存潏瑙勵攱閺嶅嘲绱�*/
+input[type=text], input[type=password], textarea {
+    border:1px solid #7F9DB9;    
+    padding:2px;
+}
+input[type=text], input[type=password], select, textarea{
+    margin-top:2px;
+}
+	
+/* 缂佺喍绔磖eadonly/disabled閻ㄥ嫭鐗卞锟�/
+.readonly, input[readonly], input[disabled], textarea[readonly],textarea[disabled] {
+	color:#555;
+	background-color: #e8e8e8;
+}
+
+/* 閼惧嘲绶遍悞锔惧仯閺冩儼绔熷鍡欐暏缁俱垼澹�*/
+.focus, input:focus, select:focus, textarea:focus {
+	outline:red solid 1px;
+} 
+
+
+
+/* 
+ * 缂佺喍绔寸搾鍛存懠閹恒儳娈戦弽宄扮础
+ * 鐎规矮绠熸い鍝勭碍娑撳秷鍏橀崣锟� */
+a:link {color: #252525;text-decoration:none;}
+a:visited {color: #0000FF;}
+a:hover {color: #ba2636;text-decoration:underline;}
+
+
+/**
+ *	鐏炲倹璇為崝锟� */
+.left{ float:left; display:inline;}
+.right{	float:right; display:inline;}
+.clear { clear:both; }
+
+div.hr {
+	clear:both;
+    
+	/* 鐠佸墽鐤哾iv妤傛ê瀹�*/
+	height:0px;
+    line-height:0px;
+    font-size:0px;
+	
+    border:1px solid #99CCFF;
+    
+    padding:0;
+    margin:2px;
+}
+
+/* 
+ *	閸斻劍锟介幐澶愭尦閺佸牊鐏�
+ */
+button, input[type=button]{
+	border: 1px solid #7F9DB9;
+    padding: 2px;
+	background:#ecf1fb;
+	
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFFFFF, EndColorStr=#9DBCEA);
+}
+
+button:hover, input[type=button]:hover {
+    border: 1px solid #ff0000;
+    padding: 2px;	
+	background:lightblue;
+	
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#4444FA);    
+    cursor: pointer;
+}
+
+table {
+	font-size: 12px
+}
+
+/* 
+ * 缂傛牞绶悰銊︾壐閻ㄥ嫭鐗卞锟�/
+.table-edit {
+	border-collapse: collapse;
+	border-spacing:0;
+}
+.table-edit tr{height:22px;}
+
+
+.table-edit td{	
+	border-color:#cccccc;
+	border-style:none none dashed none;
+	border-width:0px 0px 1px 0px;
+	padding:5px;
+}
+.table-edit .title{	
+	background-color:#CCF;
+}
+
+.title {
+	background:url('image/title.png') repeat-x;
+	height:26px;
+}
+
+/* 娣囶喖顦炬稉宸坅syui閸愯尙鐛婇惃鍕勾閺傦拷*/
+td span.combobox{
+	margin-top:2px;
+}
+input.combobox-text{
+	margin:0;
+}
+
+input[readonly].combotree-text{
+	background:window;	
+}
+input[disabled].combotree-text{
+	background:#e8e8e8;	
+}
+
+div.menu-item{border:0}
+
+div.combobox-content{
+	cursor:pointer;	
+}
+
+div.tree-node,span.tree-title{
+	height:23px;
+	line-height:23px;
+}
+span.tree-icon{
+	height: 20px;
+	width: 16px;
+	margin-top:2px;
+	margin-right: 3px;
+}
+.tree-node-selected{
+text-decoration: none;
+background: url(../images/f3.gif) no-repeat -2px -9px;
+}
+
+.tree-node-hover {
+color: #EB8A3D;
+text-decoration: none;
+background: url(../images/f3.gif) no-repeat -2px -9px;
+}
+/* 璋冩暣琛岄珮 */
+.datagrid-row,.datagrid-header-rownumber, .datagrid-cell-rownumber,.datagrid-header-check, .datagrid-cell-check,.datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber{
+white-space: nowrap !important;
+word-wrap: normal;
+text-overflow:ellipsis;
+overflow: hidden;
+height:30px !important;
+line-height:30px !important;
+}
+.datagrid-header-check input, .datagrid-cell-check input {
+	margin-top:8px;
+}
+.icon-asc{
+	background-image: url("../images/hmenu-asc.png");
+}
+.icon-desc{
+	background-image: url("../images/hmenu-desc.png");
+}
+.icon-filter-string{
+	background-image: url("../images/filter-find.png");
+}
+.icon-filter-uncheck{
+	background-image: url("../images/filter-unchecked.png");
+}
+.icon-filter-checked{
+	background-image: url("../images/filter-checked.png");
+}
+.icon-greater-than{
+	background-image: url("../images/greater_than.png");
+}
+.icon-less-than{
+	background-image: url("../images/less_than.png");
+}
+.filter-input{
+	height: 16px;
+	line-height: 16px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: silver #d9d9d9 #d9d9d9;
+}
+.sort-col{
+	font-style:italic;
+	/* font-weight:bold; */
+}
+ul.dMenu{
+	margin: 0;
+	padding: 0;
+	display: none;
+	list-style: none;
+	padding: 2px;
+	width: 100px; /* Width of Menu Items */
+	border-bottom: 1px solid #ccc;
+	background-color: #fafafa;
+	border-color: #ddd;
+	color: #444;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	-moz-box-shadow: 2px 2px 3px #cccccc;
+	-webkit-box-shadow: 2px 2px 3px #cccccc;
+	box-shadow: 2px 2px 3px #cccccc;
+	filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=2,MakeShadow=false,ShadowOpacity=0.2);
+}
+
+ul.dMenu li {
+	height: 25px;
+	line-height: 25px;
+	position: relative;
+	padding-left: 20px;
+	cursor:pointer;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #fafafa;
+}
+ul.dMenu li:hover,ul.dMenu li.menu-active{
+	border-color: #b7d2ff;
+	color: #000000;
+	background: #eaf2ff;
+}
+	
+ul.dMenu li ul {
+	position: absolute;
+	padding: 2px;
+	left: 99px; /* Set 1px less than menu width */
+	top: 0;
+	display: none;
+	margin: 0;
+	padding: 0;
+	max-height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	list-style: none;
+	width: 195px; /* Width of Menu Items */
+	background-color: #fafafa;
+	border-color: #ddd;
+	color: #444;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	-moz-box-shadow: 2px 2px 3px #cccccc;
+	-webkit-box-shadow: 2px 2px 3px #cccccc;
+	box-shadow: 2px 2px 3px #cccccc;
+	filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=2,MakeShadow=false,ShadowOpacity=0.2);
+	}
+
+/* Styles for Menu Items */
+ul.dMenu li a {
+	display: block;
+	text-decoration: none;
+	color: #777;
+	background: #fff; /* IE6 Bug */
+	padding: 5px;
+	border: 1px solid #ccc; /* IE6 Bug */
+	border-bottom: 0;
+	}
+	
+/* Holly Hack. IE Requirement \*/
+* html ul.dMenu li { float: left; height: 1%; }
+* html ul.dMenu li a { height: 1%; }
+/* End */
+
+/*ul.dMenu li:hover ul, ul.dMenu li.over ul { display: block; }*/ /* The magic */
+/* iconCls */
+.menu_icon_userset {
+background: url(../images/tabicons.gif) no-repeat -200px -220px;
+}
+.menu_icon_sustain {
+background: url(../images/tabicons.gif) no-repeat -300px -80px;
+}
+.menu_icon_new {
+background:  url(../images/tabicons.gif) no-repeat -180px -280px;
+ }
+ .menu_icon_zytp {
+background:  url(../images/tabicons.gif) no-repeat -20px -460px;
+}
+.menu_icon_datadeal {
+background: url(../images/tabicons.gif) no-repeat -380px -60px;
+}
+.menu_icon_fail {
+background: url(../images/tabicons.gif) no-repeat -140px -0px;
+}
+.menu_icon_supply {
+background: url(../images/tabicons.gif) no-repeat -80px -140px;
+}
+.menu_icon_return {
+background: url(../images/tabicons.gif) no-repeat -220px -160px;
+}
+.menu_icon_success {
+background: url(../images/tabicons.gif) no-repeat -120px -0px;
+}
+.menu_icon_again {
+background: url(../images/tabicons.gif) no-repeat -100px -60px;
+}
+.menu_icon_wait {
+background: url(../images/tabicons.gif) no-repeat -40px -0px;
+}
+.menu_icon_allot {
+background: url(../images/tabicons.gif) no-repeat -20px -0px;
+}
+.menu_icon_manage {
+background: url(../images/tabicons.gif) no-repeat -200px -280px;
+}
+.menu_icon_audit {
+background: url(../images/tabicons.gif) no-repeat -340px -0px;
+}
+.menu_icon_datadeal {
+background: url(../images/tabicons.gif) no-repeat -380px -60px;
+}
+.menu_icon_result {
+background: url(../images/tabicons.gif) no-repeat -120px -60px;
+}
+.menu_icon_apply {
+background: url(../images/tabicons.gif) no-repeat -220px -280px;
+}
+.menu_icon_norecovery {
+background: url(../images/tabicons.gif) no-repeat -40px -20px;
+}
+.menu_icon_recovery {
+background: url(../images/tabicons.gif) no-repeat -60px -20px;
+}
+/*重载datagrid 行列的宽度*/
+.datagrid-header-rownumber, .datagrid-cell-rownumber{
+	width:35px;
+}

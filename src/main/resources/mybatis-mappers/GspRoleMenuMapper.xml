@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.gsp.app.dao.GspRoleMenuDao">
+    <resultMap id="roleMenuObj" type="com.gsp.app.model.GspRoleMenu">
+        <id column="id" property="id"></id>
+        <result column="role_id" property="roleId"></result>
+        <result column="menu_id" property="menuId"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+    </resultMap>
+
+    <sql id="all_column">
+        `id`,`role_id`,`menu_id`,`create_time`,`update_time`
+    </sql>
+
+    <select id="findRoleMenuByRoleId" resultMap="roleMenuObj">
+
+        SELECT
+        <include refid="all_column" />
+        FROM gsp_role_menu WHERE role_id = #{roleId}
+
+    </select>
+
+
+    <insert id="addRoleMenu" parameterType="com.gsp.app.model.GspRoleMenu" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO gsp_role_menu
+        (role_id, menu_id, create_time, update_time)
+        VALUES
+        (#{roleId}, #{menuId}, now(), now())
+
+    </insert>
+
+    <delete id="delRoleMenuById">
+
+        DELETE FROM gsp_role_menu WHERE id = #{id}
+
+    </delete>
+
+
+</mapper>

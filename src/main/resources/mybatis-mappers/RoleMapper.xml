@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.gsp.app.dao.RoleDao">
+	<resultMap id="roleObj" type="com.gsp.app.model.GspRole">
+		<id column="id" property="id"></id>
+		<result column="role_name" property="roleName"></result>
+		<result column="role_type" property="roleType"></result>
+		<result column="role_desc" property="roleDesc"></result>
+		<result column="enable" property="enable"></result>
+		<result column="create_time" property="createTime"></result>
+		<result column="update_time" property="updateTime"></result>
+	</resultMap>
+
+	<sql id="all_column">
+		`id`,`role_name`,`role_type`,`role_desc`,`enable`,`create_time`,`update_time`
+    </sql>
+
+	<select id="selectAllRole" resultMap="roleObj">
+
+		SELECT
+		<include refid="all_column" />
+		FROM gsp_role WHERE 1 = 1
+		<if test="pojo.roleName != null and pojo.roleName != ''">
+			AND `role_name` LIKE CONCAT(CONCAT('%',#{pojo.roleName}),'%')
+		</if>
+		<if test="pojo.roleName != null and pojo.roleName != ''">
+			AND `role_type` LIKE CONCAT(CONCAT('%',#{pojo.roleType}),'%')
+		</if>
+		<if test="pojo.enable != null">
+			AND enable = #{pojo.enable}
+		</if>
+		ORDER BY create_time
+
+	</select>
+
+	<select id="findRoleById" resultMap="roleObj">
+
+		SELECT
+		<include refid="all_column" />
+		FROM gsp_role WHERE id = #{id}
+
+	</select>
+
+
+	<insert id="addRole" parameterType="com.gsp.app.model.GspRole" useGeneratedKeys="true" keyProperty="id">
+
+		INSERT INTO gsp_role
+		(role_name, role_type, role_desc, enable, create_time, update_time)
+		VALUES
+		(#{roleName}, #{roleType}, #{roleDesc}, #{enable}, now(), now())
+
+	</insert>
+
+	<update id="updateRole" parameterType="com.gsp.app.model.GspRole">
+		UPDATE gsp_role
+
+		<set>
+			<if test="roleName != null">role_name = #{roleName},</if>
+			<if test="roleType != null">role_type = #{roleType},</if>
+			<if test="roleDesc != null">role_desc = #{roleDesc},</if>
+			<if test="enable != null">enable = #{enable},</if>
+		</set>
+
+		WHERE id = #{id}
+	</update>
+
+	<update id="updateEnabledById" >
+		UPDATE gsp_role SET
+		enable = #{enable} WHERE id = #{id}
+	</update>
+
+</mapper>

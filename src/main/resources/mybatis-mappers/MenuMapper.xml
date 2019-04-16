@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.gsp.app.dao.MenuDao">
+    <resultMap id="menuObj" type="com.gsp.app.model.GspMenu">
+        <result column="id" property="id"></result>
+        <result column="menu_name" property="menuName"></result>
+        <result column="menu_url" property="menuUrl"></result>
+        <result column="menu_father_id" property="menuFatherId"></result>
+        <result column="menu_desc" property="menuDesc"></result>
+        <result column="enable" property="enable"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+    </resultMap>
+
+    <sql id="all_column">
+		`id`,`menu_name`,`menu_url`,`menu_father_id`,`menu_desc`,`enable`,`create_time`,`update_time`
+    </sql>
+
+    <select id="selectMenuById" resultMap="menuObj">
+
+		SELECT
+			<include refid="all_column" />
+		FROM gsp_menu
+		WHERE id IN(
+		SELECT DISTINCT	grm.menu_id
+		FROM gsp_role_menu grm
+		WHERE grm.role_id IN(
+		SELECT	gur.role_id
+		FROM gsp_user_role gur
+		WHERE gur.user_id = #{id}
+			)
+	)
+
+	</select>
+
+	<select id="findMenuById" resultMap="menuObj">
+
+		SELECT
+		<include refid="all_column" />
+		FROM gsp_menu WHERE id = #{id}
+
+	</select>
+
+	<select id="selectAllMenu" resultMap="menuObj">
+
+		SELECT
+		<include refid="all_column" />
+		FROM gsp_menu
+		ORDER BY create_time
+
+	</select>
+
+</mapper>

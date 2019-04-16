@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.gsp.app.dao.UserDao">
+    <resultMap id="userObj" type="com.gsp.app.model.GspUser">
+        <id column="id" property="id"></id>
+        <result column="user" property="user"></result>
+        <result column="password" property="password"></result>
+        <result column="email" property="email"></result>
+        <result column="name" property="name"></result>
+        <result column="mobile" property="mobile"></result>
+        <result column="org" property="org"></result>
+        <result column="enable" property="enable"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+    </resultMap>
+
+    <sql id="all_column">
+		`id`,`user`,`password`,`email`,`name`,`mobile`,`org`,`enable`,`create_time`,`update_time`
+    </sql>
+
+    <select id="selectAllUser" resultMap="userObj">
+
+		SELECT
+			<include refid="all_column" />
+		FROM gsp_user WHERE 1 = 1
+        <if test="pojo.user != null and pojo.user != ''">
+            AND `user` LIKE CONCAT(CONCAT('%',#{pojo.user}),'%')
+        </if>
+        <if test="pojo.name != null and pojo.name != ''">
+            AND `name` LIKE CONCAT(CONCAT('%',#{pojo.name}),'%')
+        </if>
+        <if test="pojo.enable != null">
+            AND enable = #{pojo.enable}
+        </if>
+        ORDER BY create_time
+
+	</select>
+
+    <select id="findUserById" resultMap="userObj">
+
+        SELECT
+        <include refid="all_column" />
+        FROM gsp_user WHERE id = #{id}
+
+    </select>
+
+
+    <select id="findUserByName" resultMap="userObj">
+
+        SELECT
+        <include refid="all_column" />
+        FROM gsp_user WHERE user = #{user}
+
+    </select>
+
+
+    <insert id="addUser" parameterType="com.gsp.app.model.GspUser" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO gsp_user
+        (`user`, password, email, `name`, mobile, org, enable, create_time, update_time)
+        VALUES
+        (#{user}, #{password}, #{email}, #{name}, #{mobile}, #{org}, #{enable}, now(), now())
+
+    </insert>
+
+    <update id="updateUser" parameterType="com.gsp.app.model.GspUser">
+        UPDATE gsp_user
+        <set>
+            <if test="user != null">`user` = #{user},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="name != null">`name` = #{name},</if>
+            <if test="mobile != null">mobile = #{mobile},</if>
+            <if test="org != null">org = #{org},</if>
+            <if test="enable != null">enable = #{enable},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateEnabledById" >
+        UPDATE gsp_user SET
+        enable = #{enable} WHERE id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.gsp.app.dao.GspUserRoleDao">
+    <resultMap id="userRoleObj" type="com.gsp.app.model.GspUserRole">
+        <id column="id" property="id"></id>
+        <result column="user_id" property="userId"></result>
+        <result column="role_id" property="roleId"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+    </resultMap>
+
+    <sql id="all_column">
+		`id`,`user_id`,`role_id`,`create_time`,`update_time`
+    </sql>
+
+    <select id="findUserRoleByUserId" resultMap="userRoleObj">
+
+        SELECT
+        <include refid="all_column" />
+        FROM gsp_user_role WHERE user_id = #{userId}
+
+    </select>
+
+
+    <insert id="addUserRole" parameterType="com.gsp.app.model.GspUserRole" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO gsp_user_role
+        (user_id, role_id, create_time, update_time)
+        VALUES
+        (#{userId}, #{roleId}, now(), now())
+
+    </insert>
+
+    <delete id="delUserRoleById">
+
+      DELETE FROM gsp_user_role WHERE id = #{id}
+
+    </delete>
+
+
+</mapper>
